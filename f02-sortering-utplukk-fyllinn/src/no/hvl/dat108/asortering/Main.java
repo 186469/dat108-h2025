@@ -15,7 +15,7 @@ public class Main {
 				
 		//2. Sortere liste av strenger. 
 		List<String> listeAvString = Arrays.asList("Aaa", "Xxx", "Bbb", "Kkk");
-		//??? Utvalgssortering.sorter(listeAvString);
+		Utvalgssortering.sorter(listeAvString);
 		System.out.println("Sortert listeAvString: " + listeAvString);
 		
 		
@@ -24,19 +24,37 @@ public class Main {
 				new Person("Anne", "Persen", 1985),
 				new Person("Per", "Andersen", 1984),
 				new Person("Knut", "Svensen", 1990));
-		//??? Utvalgssortering.sorter(listeAvPersoner);
+		Utvalgssortering.sorter(listeAvPersoner);
 		System.out.println("Sortert på etternavn: " + listeAvPersoner);
 		
 		
 		//4. Ønsker å sortere på fornavn. Hva gjør vi?
 		//??? NÅ BEGYNNER DET NYE!
+		Utvalgssortering.sorter(listeAvPersoner, new FornavnSammenligner());
 		System.out.println("Sortert på fornavn:   " + listeAvPersoner);
 		
 		
 		//5. Ønsker å sortere på fødselsår. Hva gjør vi?
 		//??? NÅ BEGYNNER DET NYE!
+		Utvalgssortering.sorter(listeAvPersoner, 
+				new Sammenligner<Person>() {
+					@Override
+					public int sammenlign(Person a, Person b) {
+						return a.fodselsaar() - b.fodselsaar();
+					}			
+		});
 		System.out.println("Sortert på fødselsår: " + listeAvPersoner);
 		
 	}
+}
+
+
+class FornavnSammenligner implements Sammenligner<Person> {
+
+	@Override
+	public int sammenlign(Person a, Person b) {
+		return a.fornavn().compareTo(b.fornavn());
+	}
+	
 }
 
