@@ -13,7 +13,10 @@ public class TelleOppTraad extends Thread {
 	@Override
 	public void run() {
 		for (int i=0; i<n; i++) {
-			teller.tellOpp();
+			synchronized(teller) {
+				teller.tellOpp();
+			}
+			
 		}
 	}
 }

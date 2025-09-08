@@ -4,6 +4,19 @@ public class _RaceConditionMain {
 
 	public static void main(String[] args) throws InterruptedException {
 		
+		Teller teller = new Teller();
+		TelleOppTraad tot = new TelleOppTraad(teller,100_000);
+		TelleNedTraad tnt = new TelleNedTraad(teller,100_000);
+		
+		tot.start();
+		tnt.start();
+		
+		tot.join();
+		tnt.join();
+		
+		System.out.println(teller.getVerdi());
+		
+		
 		/*
 		 * I dette eksempelet skal vi se at vi må beskytte delte ressurser
 		 * mot potensiell samtidig oppdatering fra flere tråder ...

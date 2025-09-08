@@ -3,6 +3,7 @@ package no.hvl.dat108.f05;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -21,12 +22,31 @@ public class Eks6utviklere {
 
 		System.out.println(
 				"\nEn oversikt over hvilke utviklere som kan Java:");
+		utviklere.stream()
+			.filter(u -> u.spraak().contains("Java"))
+			.forEach(n -> System.out.println(n + " "));
 		
 		System.out.println(
 				"\nNavnet på en utvikler som kan C#, eller \"INGEN\" om ingen kan C#:");
-
+		String enSomKanCSharp = utviklere.stream()
+			.filter(u -> u.spraak().contains("C#"))
+			.map(n -> n.navn())
+			.findAny()
+			.orElse("INGEN");
+		
+		System.out.println(enSomKanCSharp + "!!!!!!!!!!");
+			
+			
 		System.out.println(
 				"\nEn sortert liste over alle programmeringsspråkene utviklerne kan:");
+		
+		List<String> listeAvSpraak = utviklere.stream()
+		.map(n -> n.spraak())
+		.flatMap(s -> s.stream())
+		.distinct()
+		.sorted()
+		.toList();
+		System.out.println(listeAvSpraak);
 		
 		System.out.println(
 				"\nHvilket språk flest utviklere kan (finner ett av dem):");
