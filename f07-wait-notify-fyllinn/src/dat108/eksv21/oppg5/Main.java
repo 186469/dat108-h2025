@@ -11,8 +11,17 @@ public class Main {
 		//Her opprettes og startes en tråd som viser frem en JOptionPane meldings-
 		//boks. Når brukeren trykker på OK-knappen skal utskrifts-tråden få beskjed 
 		//om å avslutte, og meldingsboks-tråden vil også være ferdig.
-		
 		System.out.println("Tråder er startet. Venter på at de er ferdige ...");
+		
+		UtskriftsloopTraad t1 = new UtskriftsloopTraad();
+		t1.start();
+
+		MeldingsboksTraad t2 = new MeldingsboksTraad(t1);
+		t2.start();
+		
+		t1.join();
+		t2.join();
+		
 		
 		//Her ventes det på at de andre trådene er ferdige før main avsluttes.
 		

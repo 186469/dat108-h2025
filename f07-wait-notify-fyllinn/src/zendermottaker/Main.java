@@ -11,6 +11,7 @@ public class Main {
 		
 		sender.start();
 		mottaker.start();
+				
 	}
 
 }
