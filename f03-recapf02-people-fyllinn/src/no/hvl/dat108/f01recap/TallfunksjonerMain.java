@@ -56,10 +56,10 @@ public class TallfunksjonerMain {
 		
 		System.out.println("Original: " + Arrays.toString(tabell));
 		
-		oppdaterVerdier(tabell, new Doble());
+		oppdaterVerdier(tabell, n -> 1 * n);
 		System.out.println("Doble:    " + Arrays.toString(tabell));
 		
-		oppdaterVerdier(tabell, new PlussEn());
+		oppdaterVerdier(tabell, n -> n + 1);
 		System.out.println("Pluss en: " + Arrays.toString(tabell));
 		
 		//Kan vi definere og bruke en heltallsfunksjon "on the fly" via 

@@ -16,26 +16,40 @@ public class _OppretteTraaderMain {
 		 *  	 Runnable er et @FunctionalInterface med én metode void run()
 		 */
 
-		// #1
-		// Thread t1 = 
+		// #1		
+		Thread t1 = new MinTraad();
+		t1.start();
+		
 
 		// #2
-		// Thread t2 = 
+		 Thread t2 = new Thread() {
+			@Override
+			public void run() {
+				System.out.println("Hallo fra anonym tråd");
+			}
+		 };
+		 t2.start();
+		 
 
 		// #3
-		// Thread t3 = 
+		 Thread t3 = new Thread(new MinRunnable());
+		 t3.start();
 
+		 
 		// #4
-		// Thread t4 = 
+		 Thread t4 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Hallo fra anonym Runnable");
+			}			 
+		 });
+		 t4.start();
 
 		// #5
-		// Thread t5 = 
+		 Thread t5 = new Thread(() -> System.out.println("Hallo fra lambda"));
+		 t5.start();
 
-//		t1.start();
-//		t2.start();
-//		t3.start();
-//		t4.start();
-//		t5.start();
+
 
 		// Main-tråden vil også si hallo
 		System.out.println("Hallo fra main");

@@ -13,6 +13,13 @@ public class _SleepStoppJoinMain {
 		 */
 
 		//...
+		TraadSomKanStoppes t = new TraadSomKanStoppes("T");
+//		t.setDaemon(true);
+		t.start();
+		
+		Thread.sleep(5000);
+		t.stopp();
+		t.join();
 		
 		System.out.println(Thread.currentThread().getName() + " avsluttes");
 	}
